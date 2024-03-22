@@ -1,0 +1,16 @@
+org_name: nullstone
+name: internal-tls-cert
+friendly_name: Internal TLS Certificate
+description: Creates and injects a TLS certificate for internal use from a custom certificate authority.
+category: capability
+subcategory: datastores
+provider_types:
+    - aws
+    - gcp
+platform: tls
+subplatform: internal
+type: ""
+appCategories:
+    - container
+    - serverless
+is_public: true
