@@ -4,7 +4,6 @@ resource "tls_private_key" "this" {
 }
 
 resource "tls_cert_request" "this" {
-  key_algorithm   = "RSA"
   private_key_pem = tls_private_key.this.private_key_pem
   dns_names       = [local.block_name, local.internal_subdomain]
 
@@ -15,11 +14,9 @@ resource "tls_cert_request" "this" {
 }
 
 resource "tls_locally_signed_cert" "this" {
-  cert_request_pem   = tls_cert_request.this.cert_request_pem
-  ca_key_algorithm   = "RSA"
-  ca_private_key_pem = local.ca_private_key_pem
-  ca_cert_pem        = local.ca_cert_pem
-
+  cert_request_pem      = tls_cert_request.this.cert_request_pem
+  ca_private_key_pem    = local.ca_private_key_pem
+  ca_cert_pem           = local.ca_cert_pem
   validity_period_hours = var.valid_hours
 
   allowed_uses = [

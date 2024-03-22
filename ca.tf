@@ -4,7 +4,7 @@ data "ns_connection" "ca" {
 }
 
 data "google_secret_manager_secret_version" "root_private_key" {
-  secret    = data.ns_connection.ca.outputs.root_key_secret_id
+  secret = data.ns_connection.ca.outputs.root_key_secret_id
 }
 
 locals {
